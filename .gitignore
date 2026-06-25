@@ -1,0 +1,13 @@
+# Fichiers compilés (exécutables)
+puissance4
+serveur_reseau
+client_reseau
+
+# Fichiers objets (si tu en génères plus tard)
+*.o
+
+# Fichiers de configuration de l'éditeur de texte
+.vscode/
+
+# Fichiers système invisibles
+.DS_Store
