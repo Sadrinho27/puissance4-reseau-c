@@ -33,6 +33,7 @@
 #include <sys/shm.h> /* Mémoire partagée System V : shmget(), shmat(), shmctl(), shmdt() */
 #include <unistd.h>  /* Appels système POSIX : usleep() */
 #include <signal.h>  /* Gestion des signaux Unix : signal(), SIGINT */
+#include <termios.h> /* Contrôle du terminal : tcflush() */
 #include "common.h"  /* Nos structures partagées : SharedMemory, TcpMessage, ROWS, COLUMNS */
 
 /* ============================================================
@@ -522,6 +523,15 @@ int main(int argc, char *argv[])
              * IMPORTANT : scanf() est BLOQUANT → le programme attend ici
              * que l'utilisateur tape une valeur et appuie sur Entrée.
              */
+            /*
+             * tcflush() vide le buffer d'entrée du terminal avant de lire.
+             * Sans ça, les chiffres tapés pendant le tour adverse restent
+             * dans le buffer et sont lus automatiquement par scanf()
+             * au tour suivant, jouant des coups à l'insu du joueur.
+             *   STDIN_FILENO : descripteur de l'entrée standard (= 0)
+             *   TCIFLUSH     : vide les données reçues non encore lues
+             */
+            tcflush(STDIN_FILENO, TCIFLUSH);
             scanf("%d", &chosen_column);
 
             /*
