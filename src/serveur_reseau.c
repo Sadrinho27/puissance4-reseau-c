@@ -122,7 +122,7 @@ int main()
     server_addr.sin_family      = AF_INET;     /* Protocole IPv4 */
     server_addr.sin_addr.s_addr = INADDR_ANY;  /* Écouter sur TOUTES les interfaces
                                                 * (Wi-Fi, Ethernet, loopback...) */
-    server_addr.sin_port        = htons(8080); /* Port d'écoute : 8080.
+    server_addr.sin_port        = htons(9090); /* Port d'écoute : 9090.
                                                 * htons() = "Host TO Network Short"
                                                 * Convertit l'ordre des octets (endianness)
                                                 * de celui du processeur (little-endian sur x86)
@@ -158,7 +158,7 @@ int main()
     }
 
     printf("--- APPLICATION RESEAU (J1) ---\n");
-    printf("En attente de la connexion du Joueur 2 sur le port 8080...\n");
+    printf("En attente de la connexion du Joueur 2 sur le port 9090...\n");
 
     /*
      * accept() : BLOQUE l'exécution jusqu'à ce qu'un client se connecte.

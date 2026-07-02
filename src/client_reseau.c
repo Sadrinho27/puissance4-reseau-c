@@ -111,7 +111,7 @@ int main(int argc, char *argv[])
      */
     struct sockaddr_in server_addr;
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port   = htons(8080); /* Même port que le serveur : 8080 */
+    server_addr.sin_port   = htons(9090); /* Même port que le serveur : 9090 */
 
     /*
      * inet_addr() : convertit une chaîne IP en notation décimale pointée
@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
     }
 
     printf("--- APPLICATION RESEAU (J2) ---\n");
-    printf("Tentative de connexion au Joueur 1 (%s:8080)...\n", argv[1]);
+    printf("Tentative de connexion au Joueur 1 (%s:9090)...\n", argv[1]);
 
     /*
      * connect() : établit la connexion TCP avec le serveur.
